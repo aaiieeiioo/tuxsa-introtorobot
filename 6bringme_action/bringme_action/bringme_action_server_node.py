@@ -2,7 +2,7 @@ import time, random
 import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer
-from airobot_interfaces.action import StringCommand  # カスタムアクション定義のインポート
+from airobot_interfaces.action import StringCommand  # Import custom action definition
 
 
 class BringmeActionServer(Node):
@@ -19,7 +19,7 @@ class BringmeActionServer(Node):
         count = random.randint(5, 10)
 
         while count > 0:
-            self.get_logger().info(f'フィードバック送信中: 残り{count}[s]')     
+            self.get_logger().info(f'Sending feedback: {count}[s] remaining')     
             feedback.process = f'{count}'
             goal_handle.publish_feedback(feedback)  
             count -= 1  
@@ -28,21 +28,21 @@ class BringmeActionServer(Node):
         item = goal_handle.request.command
         result = StringCommand.Result()
         if item in self.food:
-            result.answer =f'はい，{item}です．'
+            result.answer = f'Yes, here is your {item}.'
         else:
-            result.answer = f'{item}を見つけることができませんでした．'
+            result.answer = f'Sorry, I could not find {item}.'
         goal_handle.succeed()
-        self.get_logger().info(f'ゴールの結果: {result.answer}')
+        self.get_logger().info(f'Goal result: {result.answer}')
         return result
 
 
 def main():
     rclpy.init()
     bringme_action_server = BringmeActionServer()
-    print('サーバ開始')
+    print('Server started')
     try:
         rclpy.spin(bringme_action_server)
     except KeyboardInterrupt:
         pass
     rclpy.try_shutdown()
-    print('サーバ終了')
+    print('Server shutdown')

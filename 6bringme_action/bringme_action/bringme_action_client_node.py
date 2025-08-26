@@ -4,44 +4,44 @@ from rclpy.action import ActionClient
 from airobot_interfaces.action import StringCommand
 
 class BringmeActionClient(Node):
-    def __init__(self):  # コンストラクタ
+    def __init__(self):  # Constructor
         super().__init__('bringme_action_client')
-        # アクションクライアントを初期化
+        # Initialize the action client
         self._action_client = ActionClient(self, StringCommand, 'command')
 
-    def send_goal(self, order):  # ゴールの送信        
-        goal_msg = StringCommand.Goal()  # ゴールメッセージの作成
-        goal_msg.command = order        
-        self._action_client.wait_for_server()  # サーバーが準備できるまで待機
-        # ゴールを送信し、フィードバックや結果を非同期で処理
+    def send_goal(self, order):  # Send a goal        
+        goal_msg = StringCommand.Goal()  # Create a goal message
+        goal_msg.command = order   # send goal (order) : for example "apple"     
+        self._action_client.wait_for_server()  # Wait until the server is ready
+        # Send the goal asynchronously and process feedback and results
         return self._action_client.send_goal_async(  
             goal_msg, feedback_callback=self.feedback_callback
         )
 
-    def feedback_callback(self, feedback_msg):  # フィードバックを受け取り進捗を表示
-        self.get_logger().info(f'フィードバック受信中: 残り{feedback_msg.feedback.process}[s]')
+    def feedback_callback(self, feedback_msg):  # Receive feedback and show progress
+        self.get_logger().info(f'Receiving feedback: {feedback_msg.feedback.process}[s] remaining')
 
 
 def main():
     rclpy.init()
     bringme_action_client = BringmeActionClient()
-    order = input('何を取ってきますか？')
+    order = input('What should I bring?: ')
     
-    # ゴールを送信しFutureオブジェクトを取得
+    # Send the goal and get a Future object
     future = bringme_action_client.send_goal(order)  
-    # ゴール送信が完了するまで待機
+    # Wait until the goal is sent
     rclpy.spin_until_future_complete(bringme_action_client, future)      
-    goal_handle = future.result()  # ゴールハンドルの取得
+    goal_handle = future.result()  # Get the goal handle
 
     if not goal_handle.accepted:
-        bringme_action_client.get_logger().info('ゴールは拒否されました')
+        bringme_action_client.get_logger().info('Goal was rejected')
     else:
-        bringme_action_client.get_logger().info('ゴールが承認されました')        
-        result_future = goal_handle.get_result_async()  # 結果を非同期で取得
-        # 結果が完了するまで待機
+        bringme_action_client.get_logger().info('Goal was accepted')        
+        result_future = goal_handle.get_result_async()  # Get the result asynchronously
+        # Wait until the result is ready
         rclpy.spin_until_future_complete(bringme_action_client, result_future)        
-        result = result_future.result().result  # 結果を取得        
-        bringme_action_client.get_logger().info(f'ゴールの結果: {result.answer}')  # ノードが終了したら破棄
+        result = result_future.result().result  # Get the result        
+        bringme_action_client.get_logger().info(f'Goal result: {result.answer}')  
     
     bringme_action_client.destroy_node()
     rclpy.shutdown()

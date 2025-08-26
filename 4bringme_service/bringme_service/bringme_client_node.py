@@ -12,8 +12,8 @@ class BringmeClient(Node):
             self.get_logger().info('Service not available, waiting...')        
         self.request = StringCommand.Request()  # Create a request instance
 
-    def send_request(self, order):  # Method to send the goal
-        self.request.command = order  # Assign order for example "apple"   
+    def send_request(self, order):  # Method to send the request
+        self.request.command = order  # Assign order (request) for example "apple"   
         self.future = self.client.call_async(self.request)  # Send async service request
 
 
