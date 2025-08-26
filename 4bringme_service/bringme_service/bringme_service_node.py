@@ -3,25 +3,25 @@ import rclpy
 from rclpy.node import Node
 from airobot_interfaces.srv import StringCommand
 
-class BringmeService(Node):  # ハッピーサービスクラス
-    def __init__(self):  # コンストラクタ
+class BringmeService(Node):  # Bringme service class
+    def __init__(self):  # Constructor
         super().__init__('bringme_service')
-        # サービスの生成（サービス型，サービス名, コールバック関数)
-        self.service = self.create_service(StringCommand, 'command',self.callback)
+        # Create the service (service type, service name, callback function)
+        self.service = self.create_service(StringCommand, 'command', self.callback)
         self.food = ['apple', 'banana', 'candy']   
 
-    def callback(self, request, response):  # コールバック関数
-        time.sleep(5)
+    def callback(self, request, response):  # Callback function
+        time.sleep(5)  # Simulate processing time
         item = request.command
         if item in self.food:
-                response.answer = f'はい，{item}です．'
+            response.answer = f'Yes, here is your {item}.'
         else:
-                response.answer = f'{item}を見つけることができませんでした．'
-        self.get_logger().info(f'レスポンス: {response.answer}')
+            response.answer = f'Sorry, I could not find {item}.'
+        self.get_logger().info(f'Response: {response.answer}')
         return response
 
 
-def main():  # main関数
+def main():  # main function
     rclpy.init()
     bringme_service = BringmeService()
     try:
@@ -29,4 +29,4 @@ def main():  # main関数
     except KeyboardInterrupt:
         pass
     rclpy.try_shutdown()
-    print('サーバ終了')
+    print('Server shutdown')
