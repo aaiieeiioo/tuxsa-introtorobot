@@ -103,17 +103,17 @@ ros2 run my_first_package listener
 
 ## 📚 What You'll Learn
 
--   How to create and build ROS 2 packages\
--   Writing simple publishers and subscribers\
--   Using `colcon` for building workspaces\
--   Running ROS 2 nodes
+- How to create and build **ROS 2 packages**  
+- Writing simple **publishers** and **subscribers**  
+- Using **colcon** to build and manage workspaces  
+- Running **ROS 2 nodes**  
+- Working with **services** and **actions** in ROS 2  
+- Implementing **localization** and **mapping**  
+- Developing **path planning** and **navigation** with a custom goal package  
 
 ------------------------------------------------------------------------
 
 ## 📝 Notes
-
--   This repository is meant for **ROS 2** (please confirm your version,
-    e.g., Foxy, Humble, etc.).
 
 -   Make sure you have sourced your ROS 2 installation before building:
 
