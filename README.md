@@ -1,11 +1,54 @@
 # Introduction to ROS -- Basic Examples
 
-This repository contains **basic ROS (Robot Operating System) code** to
-help beginners get started with ROS concepts such as nodes, topics, and
-packages.
+This repository contains **basic ROS (Robot Operating System) code** to help beginners get started with ROS concepts such as nodes, topics, and packages.
 
-The code is intended as an introduction for students learning ROS for
-the first time.
+The code is intended as an introduction for students learning ROS for the first time.  
+The examples are tested on **ROS 2 Humble**.  
+
+👉 It is recommended to run these examples using Docker:  
+[AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble](https://github.com/AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble)
+
+---
+
+## Setup Instructions
+
+### Build Image
+```bash
+git clone https://github.com/AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble
+cd docker-ros2-desktop-ai-robot-book-humble
+./build.bash
+```
+
+### Run on Linux/macOS
+#### Pull Image
+```bash
+./arb-pull.bash
+```
+
+#### Start Container
+```bash
+./arb-run.bash
+```
+
+### Run on Windows
+Pull Image)
+```bash
+arb-pull.bat
+```
+
+### Start Container
+```bash
+arb-run.bat
+```
+### Using Desktop Environment
+
+#### Using Web Browser
+Open: http://127.0.0.1:6080
+Password: ubuntu
+
+#### Using VNC Viewer
+Connect to: 127.0.0.1:15900
+Password: ubuntu
 
 ------------------------------------------------------------------------
 
