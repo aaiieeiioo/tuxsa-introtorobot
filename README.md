@@ -42,11 +42,11 @@ arb-run.bat
 ### Using Desktop Environment
 
 #### Using Web Browser
-Open: http://127.0.0.1:6080
+Connect to: http://127.0.0.1:6080
 Password: ubuntu
 
 #### Using VNC Viewer
-Connect to: 127.0.0.1:15900
+Connect to: http://127.0.0.1:15900
 Password: ubuntu
 
 ------------------------------------------------------------------------
