@@ -1,8 +1,8 @@
 # Introduction to ROS -- Basic Examples
 
-This repository contains **basic ROS (Robot Operating System) code** to help beginners get started with ROS concepts such as nodes, topics, and packages.
-
-The code is intended as an introduction for students learning ROS for the first time.  
+This repository contains **basic ROS (Robot Operating System) code** to help beginners get started with ROS concepts such as nodes, topics, and packages.  
+The code is intended as an introduction for students learning **ROS 2** for the first time, 
+and is used in the online course I taught on **Robotics and Robot Operating Systems** at [TUXSA](https://www.skilllane.com/courses/tuxsa-Robotics-and-Robot-Operating-Systems).  
 The examples are tested on **ROS 2 Humble**.  
 
 👉 It is recommended to run these examples using Docker:  
