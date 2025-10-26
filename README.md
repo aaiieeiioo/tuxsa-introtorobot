@@ -1,16 +1,15 @@
 # Introduction to ROS -- Basic Examples
 
-This repository contains **basic ROS (Robot Operating System) code** to help beginners get started with ROS concepts such as nodes, topics, and packages.  
-The code is intended as an introduction for students learning **ROS 2** for the first time, 
-and is used in the online course I taught on **Robotics and Robot Operating Systems** at [TUXSA](https://www.skilllane.com/courses/tuxsa-Robotics-and-Robot-Operating-Systems).  
-The examples are tested on **ROS 2 Humble**.  
+This repository contains **basic ROS (Robot Operating System) code** to help beginners get started with ROS concepts such as nodes, topics, and packages. The code is intended as an introduction for students learning **ROS 2** for the first time, and is used in the online course I taught on **Robotics and Robot Operating Systems** at [TUXSA](https://www.skilllane.com/courses/tuxsa-Robotics-and-Robot-Operating-Systems).  
 
-👉 It is recommended to run these examples using Docker:  
-[AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble](https://github.com/AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble)
+The examples are tested on **ROS 2 Humble**.  
 
 ---
 
-## Setup Instructions
+## Docker Setup Instructions
+
+👉 It is recommended to run these examples using Docker:  
+[AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble](https://github.com/AI-Robot-Book-Humble/docker-ros2-desktop-ai-robot-book-humble)
 
 ### Build Image
 ```bash
@@ -31,12 +30,12 @@ cd docker-ros2-desktop-ai-robot-book-humble
 ```
 
 ### Run on Windows
-Pull Image)
+#### Pull Image
 ```bash
 arb-pull.bat
 ```
 
-### Start Container
+#### Start Container
 ```bash
 arb-run.bat
 ```
